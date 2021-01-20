@@ -66,7 +66,7 @@ void printCharacterStats(Character* character)
 int startPlayerBattle(Player* player, Character* enemy)
 {
 	//Loop while both the enemy and player are alive.
-	while (player->getHealth > 0 && enemy->getHealth > 0)
+	while (player->getHealth() > 0 && enemy->getHealth() > 0)
 	{
 		system("cls");
 
@@ -86,11 +86,11 @@ int startPlayerBattle(Player* player, Character* enemy)
 			return 2;
 
 		//Enemy attack.
-		std::cout << enemy->getName << " did: " << enemy->attack(player) << " damage!" << std::endl;
+		std::cout << enemy->getName() << " did: " << enemy->attack(player) << " damage!" << std::endl;
 		system("pause");
 	}
 
-	return player->getHealth() > 0;
+	return player->getHealth > 0;
 }
 
 int main()
@@ -111,7 +111,7 @@ int main()
 		player.equipShield(Item(10));
 
 	//Initialize new enemy.
-	Enemy* enemy = new Enemy("Monster", 50, 10, 5);
+	Character* enemy = new enemy("Monster", 50, 10, 5);
 	
 	//Start battle with enemy and player and record the result.
 	int result = startPlayerBattle(player, enemy);
